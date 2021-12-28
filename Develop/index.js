@@ -107,7 +107,7 @@ const questions =  () => {
         {
             type: 'checkbox', 
             name: 'licenseBox', 
-            message: 'Select one type of license to include (required)' ,
+            message: 'Select one type of license to include' ,
             choices: ['Apache', 'Boost', 'BSD', 'GNU', 'MIT', 'Mozilla', 'ISC'], 
             validate: input => {
                 if(input.length > 1) {

@@ -1,4 +1,3 @@
-
 # Title
 Cats
 
@@ -7,20 +6,12 @@ about cats
 
 {generateIndex(confirmTableContents, optional)}
 
-  ## Installation
-  Install
-    
 
-## Built With
-CSS, HTML
-    
 
-## Usage
-Use it
-  
 
 ## Credits
 me
 
 ## License
-BSD
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
