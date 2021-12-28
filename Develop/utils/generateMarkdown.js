@@ -1,19 +1,30 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderlicense(license) {
-  return`
-[![License: ${license}](https://img.shields.io/badge/License-${license}-yellow.svg)](https://opensource.org/licenses/${license})`;
+  if(!license) {
+    return '';
+  } else {
+      console.log(license);
+      let licenseobj = {};
+      if (license[0] === 'MIT') {
+         licenseobj = {
+          license:'MIT',
+          URLBadge:'MIT-yellow', 
+          URL: 'MIT'
+        }
+      } else if (license[0] === 'ISC') {
+         licenseobj = {
+          license:'ISC',
+          URLBadge:'ISC-blue', 
+          URL: 'ISC'
+        }
+      }
+      console.log(licenseobj)
+    return`## License
+[![License: ${licenseobj.license}](https://img.shields.io/badge/License-${Llicenseobj.URLBadge}.svg)](https://opensource.org/licenses/${licenseobj.URL})`;
+  }
 
 }
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
-
 
 
 // function to generate index 
@@ -40,9 +51,14 @@ ${data.install}
 // function to generat built with if wanted
 const generateBuiltWit = (confirm, data) => {
   if (confirm) {
+    const builtWithArray = data.builtWith.replace(/,/g, "").split(' ');
+    const readmeArray = builtWithArray.map(element => {
+      return`
+* ${element.toUpperCase()}`
+    })
     return`
 ## Built With
-${data.builtWith}
+${readmeArray.join('')}
     `;
   } else {
     return '';
@@ -80,7 +96,6 @@ ${generateUsage(confirmUsage, optional)}
 ## Credits
 ${credits}
 
-## License
 ${renderlicense(licenseBox)}
 `;
 }
