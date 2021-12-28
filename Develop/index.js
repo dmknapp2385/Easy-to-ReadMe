@@ -1,6 +1,5 @@
 const inquirer = require('inquirer');
-const generateMarkdown = require('./src/generate-markdown.js');
-const {writeFile, copyFile} = require('./utils/generate-site.js');
+const generateMarkdown = require('./utils/generateMarkdown');
 
 
 // Questions for generating readme. 
@@ -41,7 +40,7 @@ const questions =  () => {
         {
             type: 'input', 
             name: 'credits', 
-            message:'Provide the credits for this project', 
+            message:'Provide the credits for this project: ', 
             validate: input => {
                 if (input) {
                     return true;
@@ -78,14 +77,14 @@ const questions =  () => {
         {
             type:'input', 
             name:'builtWith', 
-            message:'What was the project built with',
+            message:'What was the project built with?',
             when: ({confirmBuiltWith}) => {
                 if (confirmBuiltWith) {
                     return true;
                 } else {
                     return false;
                 }
-            }
+            },
         },   
         {
             type: 'confirm', 
@@ -97,8 +96,8 @@ const questions =  () => {
             type: 'input',
             name: 'usage', 
             message: 'What is this project used for?', 
-            when: ({confrimUsage}) => {
-                if (confrimUsage) {
+            when: ({confirmUsage}) => {
+                if (confirmUsage) {
                     return true;
                 } else {
                     return false;
@@ -109,14 +108,13 @@ const questions =  () => {
             type: 'checkbox', 
             name: 'licenseBox', 
             message: 'Select one type of license to include (required)' ,
-            choices: ['Opt1', 'MIT', 'OPT3', 'OPT4'], 
+            choices: ['Apache', 'Boost', 'BSD', 'GNU', 'MIT', 'Mozilla', 'ISC'], 
             validate: input => {
-                if(input.length === 1) {
-                    console.log(input);
-                    return true;
-                } else {
+                if(input.length > 1) {
                     console.log('Please pick a single license');
                     return false;
+                } else {
+                    return true;
                 }
             }
         }
@@ -128,35 +126,30 @@ questions()
     .then(data => {
         return generateMarkdown(data);
     })
-    .then (markdown => {
-        return writeFile(markdown);
+    .then(reademe => {
+        return writeFile(reademe);
+    })
+    .then(resolvemsg => {
+        console.log(resolvemsg.message);
     })
 
 
 
-
 // TODO: Create a function to write README file
-// function writeToFile(fileName, data) {
-//     const fs = require('fs');
-// // const { resolve } = require('path');
-
-// const writeFile = fileContent => {
-//     return new Promise((resolve, reject) => {
-//         fs.writeFile('./dist/index.html', fileContent, err => {
-//             // if there's an error, reject the Promsie and send the error to the Promise's `.catch() ` method
-//             if (err) {
-//                 reject(err);
-//                 // return out of the function here tomake sure th Promise doesn't naccidentally execute the resolve() funtion as well. 
-//                 return;
-//             }
-//             // if everything went well, resolve the Promise and send the successful data to the `.then() ` method
-//             resolve ({
-//                 ok: true, 
-//                 message: 'File created!'
-//             });
-//         });
-//     });
-// }
+const fs = require('fs');
+const writeFile = fileContent => {
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./dist/readMe.md', fileContent, err => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve ({
+                ok: true, 
+                message: 'File created!'
+            });
+        });
+    });
 }
 
 // TODO: Create a function to initialize app
