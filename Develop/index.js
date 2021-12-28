@@ -1,5 +1,7 @@
 const inquirer = require('inquirer');
-const generateMarkdown = require('./utils/generateMarkdown.js');
+const generateMarkdown = require('./src/generate-markdown.js');
+const {writeFile, copyFile} = require('./utils/generate-site.js');
+
 
 // Questions for generating readme. 
 const questions =  () => {
@@ -35,7 +37,20 @@ const questions =  () => {
             name: 'confirmTableContents', 
             message: 'Would you like to include a table of contents?', 
             default: false
-        },
+        },        
+        {
+            type: 'input', 
+            name: 'credits', 
+            message:'Provide the credits for this project', 
+            validate: input => {
+                if (input) {
+                    return true;
+                } else {
+                    console.log('Please enter the credits for this project');
+                    return false;
+                }
+            }
+        }, 
         {
             type: 'confirm', 
             name:'confirmInstal', 
@@ -55,6 +70,24 @@ const questions =  () => {
             }
         }, 
         {
+            type:'confirm',
+            name: 'confirmBuiltWith', 
+            message: 'Would you lik to include a built with section?',
+            default: false
+        },
+        {
+            type:'input', 
+            name:'builtWith', 
+            message:'What was the project built with',
+            when: ({confirmBuiltWith}) => {
+                if (confirmBuiltWith) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        },   
+        {
             type: 'confirm', 
             name: 'confirmUsage', 
             message: 'Would you like to include a section about project usage?', 
@@ -71,20 +104,7 @@ const questions =  () => {
                     return false;
                 }
             }
-        }, 
-        {
-            type: 'input', 
-            name: 'credits', 
-            message:'Provide the credits for this project', 
-            validate: input => {
-                if (input) {
-                    return true;
-                } else {
-                    console.log('Please enter the credits for this project');
-                    return false;
-                }
-            }
-        }, 
+        },              
         {
             type: 'checkbox', 
             name: 'licenseBox', 
@@ -105,13 +125,45 @@ const questions =  () => {
 
 
 questions()
+    .then(data => {
+        return generateMarkdown(data);
+    })
+    .then (markdown => {
+        return writeFile(markdown);
+    })
+
+
 
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+// function writeToFile(fileName, data) {
+//     const fs = require('fs');
+// // const { resolve } = require('path');
+
+// const writeFile = fileContent => {
+//     return new Promise((resolve, reject) => {
+//         fs.writeFile('./dist/index.html', fileContent, err => {
+//             // if there's an error, reject the Promsie and send the error to the Promise's `.catch() ` method
+//             if (err) {
+//                 reject(err);
+//                 // return out of the function here tomake sure th Promise doesn't naccidentally execute the resolve() funtion as well. 
+//                 return;
+//             }
+//             // if everything went well, resolve the Promise and send the successful data to the `.then() ` method
+//             resolve ({
+//                 ok: true, 
+//                 message: 'File created!'
+//             });
+//         });
+//     });
+// }
+}
 
 // TODO: Create a function to initialize app
 function init() {}
 
 // Function call to initialize app
 init();
+
+
+
