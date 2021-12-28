@@ -1,10 +1,9 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// function to return the license portion of the readme file
+
 function renderlicense(license) {
   if(!license) {
     return '';
   } else {
-      console.log(license);
       let licenseobj = {};
       if (license[0] === 'MIT') {
          licenseobj = {
@@ -18,23 +17,47 @@ function renderlicense(license) {
           URLBadge:'ISC-blue', 
           URL: 'ISC'
         }
-      }
-      console.log(licenseobj)
-    return`## License
-[![License: ${licenseobj.license}](https://img.shields.io/badge/License-${Llicenseobj.URLBadge}.svg)](https://opensource.org/licenses/${licenseobj.URL})`;
+      } else if (license[0] === 'Apache') {
+        licenseobj = {
+         license:'Apache 2.0',
+         URLBadge:'Apache_2.0-blue', 
+         URL: 'Apache-2.0'
+       }
+      } else if (license[0] === 'GNU') {
+        licenseobj = {
+        license:'GNU GPLv3',
+        URLBadge:'GPLv3-blue', 
+        URL: 'gpl-3.0'
+        }
+      } else if (license[0] === 'Mozilla') {
+        licenseobj = {
+        license:'Mozilla Public License 2.0',
+        URLBadge:'MPL_2.0-brightgreen', 
+        URL: 'MPL-2.0'
+        }
+      } else if (license[0] === 'Perl') {
+        licenseobj = {
+        license:'Perl',
+        URLBadge:'Perl-0298c3', 
+        URL: 'Artistic-2.0'
+        }
+      } 
+   return`## License
+${licenseobj.license}
+[![License: ${licenseobj.license}](https://img.shields.io/badge/License-${Llicenseobj.URLBadge}.svg)](https://opensource.org/licenses/${licenseobj.URL})
+`;
   }
-
 }
 
 
 // function to generate index 
-// const generateIndex = (confirm, data) => {
-//   if (confirm) {
-//     return console.log("this worked kind of");
-//   } else {
-//     return '';
-//   }
-// }
+const generateIndex = (confirm, data) => {
+  if (confirm) {
+    return console.log("this worked kind of");
+  } else {
+    return '';
+  }
+}
 
 // function to generat installation if wanted
 const generateInstall = (confirm, data) => {

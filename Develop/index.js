@@ -108,7 +108,7 @@ const questions =  () => {
             type: 'checkbox', 
             name: 'licenseBox', 
             message: 'Select one type of license to include' ,
-            choices: ['Apache', 'Boost', 'BSD', 'GNU', 'MIT', 'Mozilla', 'ISC'], 
+            choices: ['Apache', 'GNU', 'MIT', 'Mozilla', 'ISC', 'Perl'], 
             validate: input => {
                 if(input.length > 1) {
                     console.log('Please pick a single license');
