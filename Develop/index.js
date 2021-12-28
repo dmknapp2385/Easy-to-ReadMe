@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-// const generateMarkdown = require('./utils/generateMarkdown.js');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 
 // Questions for generating readme. 
 const questions =  () => {
