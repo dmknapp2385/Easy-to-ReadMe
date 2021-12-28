@@ -43,8 +43,8 @@ function renderlicense(license) {
         }
       } 
    return`## License
-${licenseobj.license}
-[![License: ${licenseobj.license}](https://img.shields.io/badge/License-${Llicenseobj.URLBadge}.svg)](https://opensource.org/licenses/${licenseobj.URL})
+This project is licensed under the ${licenseobj.license}.
+[![License: ${licenseobj.license}](https://img.shields.io/badge/License-${licenseobj.URLBadge}.svg)](https://opensource.org/licenses/${licenseobj.URL})
 `;
   }
 }
@@ -52,12 +52,17 @@ ${licenseobj.license}
 
 // function to generate index 
 const generateIndex = (confirm, data) => {
-  if (confirm) {
-    return console.log("this worked kind of");
-  } else {
+  if (!confirm) {
     return '';
+  } else {
+    const indexArray = []
+    for (const [key] of Object.entries(data)) {
+      indexArray.push(key);
+    }
+    console.log(indexArray);
   }
 }
+
 
 // function to generat installation if wanted
 const generateInstall = (confirm, data) => {
@@ -111,10 +116,10 @@ ${title}
 ## Description
 ${description}
 
-{generateIndex(confirmTableContents, optional)}
+${generateIndex(confirmTableContents, optional)}
 ${generateInstall(confirmInstal, optional)}
-${generateBuiltWit(confirmBuiltWith, optional)}
 ${generateUsage(confirmUsage, optional)}
+${generateBuiltWit(confirmBuiltWith, optional)}
 
 ## Credits
 ${credits}
