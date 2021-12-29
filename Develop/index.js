@@ -58,7 +58,7 @@ const questions =  () => {
         }, 
         {
             type: 'input', 
-            name: 'install', 
+            name: 'intall', 
             message: 'Write installation instructions.', 
             when: ({confirmInstal}) => {
                 if (confirmInstal) {
@@ -103,20 +103,86 @@ const questions =  () => {
                     return false;
                 }
             }
-        },              
+        },  
         {
-            type: 'checkbox', 
+            type: 'confirm', 
+            name: 'screenshotConfirm', 
+            message: 'Would you like to include an image of the project?', 
+            default: true
+        }, 
+        {
+            type:'input', 
+            name: 'screenshot', 
+            message: 'Please write the name of the file as it appears in the image folder',
+            when: ({screenshotConfirm}) => {
+                if (screenshotConfirm) {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
+        },
+        {
+            type: 'confirm', 
+            name: 'deployConfirm', 
+            message: 'Would you like to provide information on how to deploy this project?', 
+            default: false
+        }, 
+        {
+            type:'input', 
+            name: 'deploy', 
+            message: 'Provide information on how to deploy.',
+            when: ({deployConfirm}) => {
+                if (deployConfirm) {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
+        },
+        {
+            type: 'confirm', 
+            name: 'linkConfirm', 
+            message: 'Would you like to providie a website url link for this project?', 
+            default: false
+        }, 
+        {
+            type:'input', 
+            name: 'link', 
+            message: 'Write the url as it appears in the browser.',
+            when: ({linkConfirm}) => {
+                if (linkConfirm) {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
+        },
+        {
+            type: 'confirm', 
+            name: 'contributionConfirm', 
+            message: 'Would you like to providie information about how to contribute to this project?', 
+            default: false
+        }, 
+        {
+            type:'input', 
+            name: 'contribution', 
+            message: 'Provide information on how to contribute.',
+            when: ({contributionConfirm}) => {
+                if (contributionConfirm) {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
+        },
+        {
+            type: 'list', 
             name: 'licenseBox', 
             message: 'Select one type of license to include' ,
-            choices: ['Apache', 'GNU', 'MIT', 'Mozilla', 'ISC', 'Perl'], 
-            validate: input => {
-                if(input.length > 1) {
-                    console.log('Please pick a single license');
-                    return false;
-                } else {
-                    return true;
-                }
-            }
+            choices: ['Apache', 'GNU', 'MIT', 'Mozilla', 'ISC', 'Perl', 'None'], 
+            default: 'None'
+            
         }
     ]); 
 }
@@ -124,6 +190,7 @@ const questions =  () => {
 
 questions()
     .then(data => {
+        console.log(data)
         return generateMarkdown(data);
     })
     .then(reademe => {
@@ -135,7 +202,7 @@ questions()
 
 
 
-// TODO: Create a function to write README file
+// function to write README file
 const fs = require('fs');
 const writeFile = fileContent => {
     return new Promise((resolve, reject) => {
