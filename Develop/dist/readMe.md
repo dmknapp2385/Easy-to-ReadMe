@@ -1,50 +1,49 @@
-
 # Title
-Elle
+about me
 
 ## Description
-Hello
+about me
 
 
+## Table of Contents
+
+* [Installation](#installation)
+* ['Built With'](#built-with)
+* [Usage](#usage)
+* [Deploy](#deploy)
+* [Website](#Website)
+* [Contribution](#Contribution)
 
 ## Installation
-undefined
+Clone this repository from https://github.com/dmknapp2385
     
-
 ## Usage
-use it
+Follow the command prompts. When entering information about built with, make sure to separate items with a comma. to upload screenshot make sure the image you wnat to include in your readme is in an image folder in the root of your project directory. 
   
-
     
-![](assets/images/image.png);
+![](assets/images/image.png)
   
-
 ## Built With
 
-* CSS
-* HTML
-* JAVA
+* NODE.JS
+* JAVASCRIPT
     
-
 ## Contribution
-contribute please
+Please fork this repo and submit pull requests if you thing of something to add 
   
-
 ## Deployment
 
-deploy it
+Deploy this project on your personal pc by cloning the repo to your machine. Install the npm inquirer package with`````
   
+## Website
 
-## Website Link
-
-This project can be found at https://meandnono.com
+This project can be found at https://google.com
   
-
 ## Credits
-me
+Made with love by Elle
 
 ## License
 
-This project is licensed under the ISC.
-[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+This project is licensed under MIT.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 

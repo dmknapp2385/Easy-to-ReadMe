@@ -52,16 +52,16 @@ const questions =  () => {
         }, 
         {
             type: 'confirm', 
-            name:'confirmInstal', 
+            name:'confirmInstall', 
             message: 'Would you like to include directions on how to install?', 
             default: false
         }, 
         {
             type: 'input', 
-            name: 'intall', 
+            name: 'Installation', 
             message: 'Write installation instructions.', 
-            when: ({confirmInstal}) => {
-                if (confirmInstal) {
+            when: ({confirmInstall}) => {
+                if (confirmInstall) {
                     return true;
                 } else {
                     return false;
@@ -94,7 +94,7 @@ const questions =  () => {
         }, 
         {
             type: 'input',
-            name: 'usage', 
+            name: 'Usage', 
             message: 'What is this project used for?', 
             when: ({confirmUsage}) => {
                 if (confirmUsage) {
@@ -130,7 +130,7 @@ const questions =  () => {
         }, 
         {
             type:'input', 
-            name: 'deploy', 
+            name: 'Deploy', 
             message: 'Provide information on how to deploy.',
             when: ({deployConfirm}) => {
                 if (deployConfirm) {
@@ -148,7 +148,7 @@ const questions =  () => {
         }, 
         {
             type:'input', 
-            name: 'link', 
+            name: 'Website', 
             message: 'Write the url as it appears in the browser.',
             when: ({linkConfirm}) => {
                 if (linkConfirm) {
@@ -166,7 +166,7 @@ const questions =  () => {
         }, 
         {
             type:'input', 
-            name: 'contribution', 
+            name: 'Contribution', 
             message: 'Provide information on how to contribute.',
             when: ({contributionConfirm}) => {
                 if (contributionConfirm) {

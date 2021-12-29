@@ -44,7 +44,7 @@ function renderlicense(license) {
       } 
    return`## License
 
-This project is licensed under the ${licenseobj.license}.
+This project is licensed under ${licenseobj.license}.
 [![License: ${licenseobj.license}](https://img.shields.io/badge/License-${licenseobj.URLBadge}.svg)](https://opensource.org/licenses/${licenseobj.URL})
 `;
   }
@@ -58,9 +58,18 @@ const generateIndex = (confirm, data) => {
   } else {
     const indexArray = []
     for (const [key] of Object.entries(data)) {
-      indexArray.push(key);
+      if (key === 'builtWith') {
+        indexArray.push(`
+* ['Built With'](#built-with)`);
+      } else {
+        indexArray.push(`
+* [${key}](#${key.toLowerCase})`);
+      }
     }
-    console.log(indexArray);
+    return`
+## Table of Contents
+${indexArray.join('')}
+`
   }
 }
 
@@ -70,7 +79,7 @@ const generateInstall = (confirm, data) => {
   if (confirm) {
     return`
 ## Installation
-${data.install}
+${data.Installation}
     `;
   } else {
     return '';
@@ -99,7 +108,7 @@ const generateUsage = (confirm, data) => {
   if (confirm) {
     return`
 ## Usage
-${data.usage}
+${data.Usage}
   `;
   } else {
     return '';
@@ -123,7 +132,7 @@ const generateContributing = (confirm, data) => {
   if (confirm) {
     return`
 ## Contribution
-${data.contribution}
+${data.Contribution}
   `;
   } else {
     return '';
@@ -136,7 +145,7 @@ const generateDeploy = (confirm, data) => {
     return`
 ## Deployment
 
-${data.deploy}
+${data.Deploy}
   `;
   } else {
     return '';
@@ -147,9 +156,9 @@ ${data.deploy}
 const generateLink = (confirm, data) => {
   if (confirm) {
     return`
-## Website Link
+## Website
 
-This project can be found at ${data.link}
+This project can be found at ${data.Website}
   `;
   } else {
     return '';
@@ -161,23 +170,14 @@ This project can be found at ${data.link}
 
 // function to creat the markdown 
 module.exports =  data => {
-  const {title, description, confirmTableContents, credits, confirmInstal, confirmBuiltWith, confirmUsage, screenshotConfirm, screenshot,  deployConfirm, linkConfirm, contributionConfirm, licenseBox, ...optional} = data; 
-  return `
-# Title
+  const {title, description, confirmTableContents, credits, confirmInstall, confirmBuiltWith, confirmUsage, screenshotConfirm, screenshot,  deployConfirm, linkConfirm, contributionConfirm, licenseBox, ...optional} = data; 
+  return `# Title
 ${title}
 
 ## Description
 ${description}
 
-${generateIndex(confirmTableContents, optional)}
-${generateInstall(confirmInstal, optional)}
-${generateUsage(confirmUsage, optional)}
-${generateScreenshot(screenshotConfirm, screenshot)}
-${generateBuiltWit(confirmBuiltWith, optional)}
-${generateContributing(contributionConfirm, optional)}
-${generateDeploy(deployConfirm, optional)}
-${generateLink(linkConfirm, optional)}
-
+${generateIndex(confirmTableContents, optional)}${generateInstall(confirmInstall, optional)}${generateUsage(confirmUsage, optional)}${generateScreenshot(screenshotConfirm, screenshot)}${generateBuiltWit(confirmBuiltWith, optional)}${generateContributing(contributionConfirm, optional)}${generateDeploy(deployConfirm, optional)}${generateLink(linkConfirm, optional)}
 ## Credits
 ${credits}
 
