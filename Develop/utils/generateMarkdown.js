@@ -63,7 +63,7 @@ const generateIndex = (confirm, data) => {
 * ['Built With'](#built-with)`);
       } else {
         indexArray.push(`
-* [${key}](#${key.toLowerCase})`);
+* [${key}](#${key.toLowerCase()})`);
       }
     }
     return`
