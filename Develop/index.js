@@ -71,7 +71,7 @@ const questions =  () => {
         {
             type:'confirm',
             name: 'confirmBuiltWith', 
-            message: 'Would you lik to include a built with section?',
+            message: 'Would you like to include a built with section?',
             default: false
         },
         {
@@ -89,13 +89,13 @@ const questions =  () => {
         {
             type: 'confirm', 
             name: 'confirmUsage', 
-            message: 'Would you like to include a section about project usage?', 
+            message: 'Would you like to include a usage section?', 
             default: false
         }, 
         {
             type: 'input',
             name: 'Usage', 
-            message: 'What is this project used for?', 
+            message: 'How do you use this application?', 
             when: ({confirmUsage}) => {
                 if (confirmUsage) {
                     return true;
@@ -177,6 +177,48 @@ const questions =  () => {
             },
         },
         {
+            type: 'confirm', 
+            name: 'testsConfirm', 
+            message: 'Would you like to providie information on how to test the project?', 
+            default: false
+        }, 
+        {
+            type:'input', 
+            name: 'tests', 
+            message: 'Provide information on how to test.',
+            when: ({testsConfirm}) => {
+                if (testsConfirm) {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
+        },
+        {
+            type:'input', 
+            name: 'questionsUsername', 
+            message: 'Provide your github username.',
+            validate: input => {
+                if (!input) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        },
+        {
+            type:'input', 
+            name: 'questionsEmail', 
+            message: 'Provide your email.',
+            validate: input => {
+                if (!input) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        },
+        {
             type: 'list', 
             name: 'licenseBox', 
             message: 'Select one type of license to include' ,
@@ -190,7 +232,7 @@ const questions =  () => {
 
 questions()
     .then(data => {
-        console.log(data)
+        console.log(data); 
         return generateMarkdown(data);
     })
     .then(reademe => {

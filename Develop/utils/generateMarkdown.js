@@ -44,7 +44,6 @@ function renderlicense(license) {
       } 
    return`## License
 
-This project is licensed under ${licenseobj.license}.
 [![License: ${licenseobj.license}](https://img.shields.io/badge/License-${licenseobj.URLBadge}.svg)](https://opensource.org/licenses/${licenseobj.URL})
 `;
   }
@@ -166,22 +165,39 @@ This project can be found at ${data.Website}
 }
 
 
+// function to generat tests section
+const generateTests = (confirm, data) => {
+  if (confirm) {
+    return`
+## Tests
+${data.tests}
+  `;
+  } else {
+    return '';
+  }
+}
 
 
 // function to creat the markdown 
 module.exports =  data => {
-  const {title, description, confirmTableContents, credits, confirmInstall, confirmBuiltWith, confirmUsage, screenshotConfirm, screenshot,  deployConfirm, linkConfirm, contributionConfirm, licenseBox, ...optional} = data; 
+  const {title, description, confirmTableContents, credits, confirmInstall, confirmBuiltWith, confirmUsage, screenshotConfirm, screenshot,  deployConfirm, linkConfirm, contributionConfirm, licenseBox, questionsUsername, questionsEmail, testsConfirm, ...optional} = data; 
   return `# Title
 ${title}
+${renderlicense(licenseBox)}
+
 
 ## Description
 ${description}
 
-${generateIndex(confirmTableContents, optional)}${generateInstall(confirmInstall, optional)}${generateUsage(confirmUsage, optional)}${generateScreenshot(screenshotConfirm, screenshot)}${generateBuiltWit(confirmBuiltWith, optional)}${generateContributing(contributionConfirm, optional)}${generateDeploy(deployConfirm, optional)}${generateLink(linkConfirm, optional)}
+${generateIndex(confirmTableContents, optional)}${generateInstall(confirmInstall, optional)}${generateUsage(confirmUsage, optional)}${generateScreenshot(screenshotConfirm, screenshot)}${generateBuiltWit(confirmBuiltWith, optional)}${generateContributing(contributionConfirm, optional)}${generateDeploy(deployConfirm, optional)}${generateLink(linkConfirm, optional)}${generateTests(testsConfirm, optional)}
 ## Credits
 ${credits}
 
-${renderlicense(licenseBox)}
+## Questions
+Please direct any questions to ${questionsEmail} or visit ![My GitHub Account](https://wwww.github.com/${questionsUsername}) for more information. 
+
+## License
+This projects is protected under ${licenseBox}.
 `;
 }
 
