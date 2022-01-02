@@ -42,8 +42,7 @@ function renderlicense(license) {
         URL: 'Artistic-2.0'
         }
       } 
-   return`## License
-
+   return`
 [![License: ${licenseobj.license}](https://img.shields.io/badge/License-${licenseobj.URLBadge}.svg)](https://opensource.org/licenses/${licenseobj.URL})
 `;
   }
@@ -59,7 +58,7 @@ const generateIndex = (confirm, data) => {
     for (const [key] of Object.entries(data)) {
       if (key === 'builtWith') {
         indexArray.push(`
-* ['Built With'](#built-with)`);
+* [Built With](#built-with)`);
       } else {
         indexArray.push(`
 * [${key}](#${key.toLowerCase()})`);
@@ -170,7 +169,7 @@ const generateTests = (confirm, data) => {
   if (confirm) {
     return`
 ## Tests
-${data.tests}
+${data.Tests}
   `;
   } else {
     return '';
@@ -181,8 +180,7 @@ ${data.tests}
 // function to creat the markdown 
 module.exports =  data => {
   const {title, description, confirmTableContents, credits, confirmInstall, confirmBuiltWith, confirmUsage, screenshotConfirm, screenshot,  deployConfirm, linkConfirm, contributionConfirm, licenseBox, questionsUsername, questionsEmail, testsConfirm, ...optional} = data; 
-  return `# Title
-${title}
+  return `# ${title}
 ${renderlicense(licenseBox)}
 
 
@@ -194,7 +192,7 @@ ${generateIndex(confirmTableContents, optional)}${generateInstall(confirmInstall
 ${credits}
 
 ## Questions
-Please direct any questions to ${questionsEmail} or visit ![My GitHub Account](https://wwww.github.com/${questionsUsername}) for more information. 
+Please direct any questions to ${questionsEmail} or visit my GitHub accoutn: https://wwww.github.com/${questionsUsername} for more information. 
 
 ## License
 This projects is protected under ${licenseBox}.

@@ -184,7 +184,7 @@ const questions =  () => {
         }, 
         {
             type:'input', 
-            name: 'tests', 
+            name: 'Tests', 
             message: 'Provide information on how to test.',
             when: ({testsConfirm}) => {
                 if (testsConfirm) {
