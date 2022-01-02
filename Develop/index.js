@@ -125,13 +125,13 @@ const questions =  () => {
         {
             type: 'confirm', 
             name: 'deployConfirm', 
-            message: 'Would you like to provide information on how to deploy this project?', 
+            message: 'Would you like to provide information on deployment this project?', 
             default: false
         }, 
         {
             type:'input', 
             name: 'Deploy', 
-            message: 'Provide information on how to deploy.',
+            message: 'Provide information on how to deploy with this application.',
             when: ({deployConfirm}) => {
                 if (deployConfirm) {
                     return true;

@@ -22,9 +22,9 @@ npm install inquirer
 ```````
     
 ## Usage
-To use this application, from the command line/terminal, change directory to develop and run node index. Follow the prompts. Some readMe sections are required and input must be provided (i.e. title, description, credits), while others are optional. When prompted to choose a section, type y for yes and n for no, then supply the input. The final prompt asks the user to select a license from a list of six, with none as default. Use up and down arrows to move among seletions and enter to choose. 
+To use this application, from the command line/terminal, change directory to develop and run node index. Follow the prompts. Some readMe sections are required and input must be provided (i.e. title, description, credits), while others are optional. When prompted to choose a section, type y for yes and n for no, then supply the input. The final prompt asks the user to select a license from a list of six, with none as default. Use up and down arrows to move among seletions and enter to choose. When prompted for images to include, ensure that any images in your readme are in a directroy called images within the dist directory. 
     
-![](assets/images/example.jpg)
+![](/images/example-questions.png)
   
 ## Built With
 
