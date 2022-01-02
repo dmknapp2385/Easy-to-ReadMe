@@ -67,6 +67,7 @@ const generateIndex = (confirm, data) => {
     return`
 ## Table of Contents
 ${indexArray.join('')}
+* [Questions](#questions)
 `
   }
 }
@@ -141,7 +142,7 @@ ${data.Contribution}
 const generateDeploy = (confirm, data) => {
   if (confirm) {
     return`
-## Deployment
+## Deploy
 
 ${data.Deploy}
   `;

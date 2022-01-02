@@ -232,7 +232,6 @@ const questions =  () => {
 
 questions()
     .then(data => {
-        console.log(data); 
         return generateMarkdown(data);
     })
     .then(reademe => {
