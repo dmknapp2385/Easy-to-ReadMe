@@ -119,7 +119,7 @@ const generateScreenshot = (confirm, data) => {
   if (confirm) {
     return`
     
-![](assets/images/${data})
+![](/images/${data})
   `;
   } else {
     return '';
@@ -196,7 +196,7 @@ ${credits}
 Please direct any questions to ${questionsEmail} or visit my GitHub accoutn: https://wwww.github.com/${questionsUsername} for more information. 
 
 ## License
-This projects is protected under ${licenseBox}.
+This projects is protected under [${licenseBox}](license.txt).
 `;
 }
 
