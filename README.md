@@ -28,7 +28,7 @@ Follow the prompts. Some readMe sections are required and input must be provided
     
 ![](/images/answering-questions.png)
 
-[Example Walk Through Video](https://user-images.githubusercontent.com/91348382/148696597-4adb6d34-057b-491a-aca8-ee8caeda3d5e.mp4)
+[Example Walk Through Video](https://drive.google.com/file/d/1torTPQb01o4bMy4JFKvSFPkNJ9-gcTUL/view?usp=sharing)
 
 ## Built With
 
