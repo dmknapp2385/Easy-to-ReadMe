@@ -187,13 +187,14 @@ ${renderlicense(licenseBox)}
 
 ## Description
 ${description}
+${generateScreenshot(screenshotConfirm, screenshot)}
 
-${generateIndex(confirmTableContents, optional)}${generateInstall(confirmInstall, optional)}${generateUsage(confirmUsage, optional)}${generateScreenshot(screenshotConfirm, screenshot)}${generateBuiltWit(confirmBuiltWith, optional)}${generateContributing(contributionConfirm, optional)}${generateDeploy(deployConfirm, optional)}${generateLink(linkConfirm, optional)}${generateTests(testsConfirm, optional)}
+${generateIndex(confirmTableContents, optional)}${generateInstall(confirmInstall, optional)}${generateUsage(confirmUsage, optional)}${generateBuiltWit(confirmBuiltWith, optional)}${generateContributing(contributionConfirm, optional)}${generateDeploy(deployConfirm, optional)}${generateLink(linkConfirm, optional)}${generateTests(testsConfirm, optional)}
 ## Credits
 ${credits}
 
 ## Questions
-Please direct any questions to ${questionsEmail} or visit my GitHub accoutn: https://wwww.github.com/${questionsUsername} for more information. 
+Please direct any questions to ${questionsEmail} or visit my [GitHub](https://wwww.github.com/${questionsUsername}) for more information. 
 
 ## License
 This projects is protected under [${licenseBox}](license.txt).
