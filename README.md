@@ -23,12 +23,12 @@ npm install inquirer
     
 ## Usage
 To use this application, from the command line/terminal, change directory to develop and run node index. 
-![](/images/running.mp4)
+![](/images/start-up.gif)
 Follow the prompts. Some readMe sections are required and input must be provided (i.e. title, description, credits), while others are optional. When prompted to choose a section, type y for yes and n for no, then supply the input. The final prompt asks the user to select a license from a list of six, with none as default. Use up and down arrows to move among seletions and enter to choose. When prompted for an image to include, ensure that the image is located in a directroy called images within the Develop directory. Enter you licens.txt file to the directory that contains your readMe file and name it license.txt.
     
 ![](/images/answering-questions.png)
-![](/images/question-walk-through.mp4)
 
+[Example Walk Through Video](https://user-images.githubusercontent.com/91348382/148696597-4adb6d34-057b-491a-aca8-ee8caeda3d5e.mp4)
 
 ## Built With
 
