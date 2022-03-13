@@ -194,7 +194,7 @@ ${generateIndex(confirmTableContents, optional)}${generateInstall(confirmInstall
 ${credits}
 
 ## Questions
-Please direct any questions to ${questionsEmail} or visit my [GitHub](https://wwww.github.com/${questionsUsername}) for more information. 
+Please direct any questions to ${questionsEmail} or visit my [GitHub](https://github.com/${questionsUsername}) for more information. 
 
 ## License
 This projects is protected under [${licenseBox}](license.txt).
